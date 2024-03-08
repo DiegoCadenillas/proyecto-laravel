@@ -15,7 +15,13 @@
 <body>
 
     <div class="container">
-        <h3 class=" mt-3">Laravel 10 CRUD Básico</h3>
+        <h3 class=" mt-3">Proyecto Laravel - Diego Cadenillas</h3>
+        <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+        </form>
         @yield('content')
     </div>
 
