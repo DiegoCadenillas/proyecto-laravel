@@ -15,12 +15,12 @@
                 </div>
             </div>
             <div class="card-body">
-
-                    <div class="row">
-                        <label for="code" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $product->name }}
-                        </div>
+                
+                <div class="row">
+                    <label for="code" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        {{ $product->name }}
+                    </div>
                     </div>
 
                     <div class="row">
@@ -48,6 +48,15 @@
                         <label for="descripcion" class="col-md-4 col-form-label text-md-end text-start"><strong>Stock:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $product->stock }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="images" class="col-md-4 col-form-label text-md-end text-start"><strong>Imágenes:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            @foreach ($images as $image)
+                                <img src="/productImages/{{ $image->imgURL }}" alt="{{ $image->altText }}">
+                            @endforeach
                         </div>
                     </div>
         

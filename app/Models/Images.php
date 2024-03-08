@@ -14,4 +14,8 @@ class Images extends Model
         'imgURL',
         'altText'
     ];
+
+    public function products() {
+        return $this->belongsTo(Products::class);
+    }
 }

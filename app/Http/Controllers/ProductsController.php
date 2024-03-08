@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Images;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -41,9 +42,11 @@ class ProductsController extends Controller
     public function show(String $id)
     {
         $product = Products::find($id);
+        $images = Images::all()->where('productId', '=', $id);
 
         return view('products.show', [
-            'product' => $product
+            'product' => $product,
+            'images' => $images
         ]);
     }
 

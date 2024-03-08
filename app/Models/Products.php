@@ -16,4 +16,9 @@ class Products extends Model
         'price',
         'stock'
     ];
+
+    public function images()
+    {
+        return $this->hasMany('App\Models\Images', 'productId', 'id');
+    }
 }

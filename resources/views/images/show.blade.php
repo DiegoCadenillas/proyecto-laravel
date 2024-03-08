@@ -25,10 +25,10 @@
 
                     <!-- MUESTRA DE NOMBRBE DE PRODUCTO -->
                     <div class="row">
-                        <label for="apellidos" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre de
+                        <label for="product-name" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre de
                                 Producto:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            {{ $image->description }}
+                            {{ $image->productId }}
                         </div>
                     </div>
 
