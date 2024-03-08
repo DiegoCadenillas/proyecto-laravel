@@ -56,6 +56,7 @@
                         <div class="col-md-6" style="line-height: 35px;">
                             @foreach ($images as $image)
                                 <img src="/productImages/{{ $image->imgURL }}" alt="{{ $image->altText }}">
+                                <p>Texto Alternativo: {{ $image->altText }}</p>
                             @endforeach
                         </div>
                     </div>
