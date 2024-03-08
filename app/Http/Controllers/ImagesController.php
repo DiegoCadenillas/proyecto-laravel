@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Images;
+use App\Models\Products;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -15,7 +16,12 @@ class ImagesController extends Controller
     public function index()
     {
         $images = Images::all();
-        return view('images.index', compact('images'));
+        $products = Products::all();
+        $productNames = [];
+        foreach ($products as $product) {
+            $productNames[$product->id] = $product->name;
+        }
+        return view('images.index', compact('images', 'productNames'));
     }
 
     /**
@@ -61,9 +67,11 @@ class ImagesController extends Controller
     public function show(String $id)
     {
         $image = Images::find($id);
+        $productName = Products::find($image->productId)->name;
 
         return view('images.show', [
-            'image' => $image
+            'image' => $image,
+            'productName' => $productName
         ]);
     }
 

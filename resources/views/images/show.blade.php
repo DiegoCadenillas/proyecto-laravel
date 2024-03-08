@@ -28,7 +28,7 @@
                         <label for="product-name" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre de
                                 Producto:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            {{ $image->productId }}
+                            {{ $productName }}
                         </div>
                     </div>
 

@@ -31,7 +31,7 @@
                                     <td><img src="/productImages/{{ $image->imgURL }}"
                                             alt="{{ $image->altText }}"></td>
                                     <!-- Muestra de nombre del producto -->
-                                    <td>{{ $image->description }}</td>
+                                    <td>{{ $productNames[$image->productId] }}</td>
                                     <td>{{ $image->altText }}</td>
                                     <td>
                                         <form action="{{ route('images.destroy', $image->id) }}" method="post">
