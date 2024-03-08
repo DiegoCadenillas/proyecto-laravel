@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ImagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::resource()
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('products', ProductsController::class);
+Route::resource('images', ImagesController::class);
+
+// Route::get('/productos', function () {
+//     return view('productos');
+// });
+
+// Route::get('/productos/{id}/img', function () {
+//     return 
+// })
