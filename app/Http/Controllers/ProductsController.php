@@ -10,6 +10,18 @@ use Illuminate\Http\Request;
 class ProductsController extends Controller
 {
     /**
+     * Instantiate a new ProductsController instance, controlling whether user is signed in/verified.
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except([
+            'logout', 'index'
+        ]);
+        $this->middleware('auth')->only('logout', 'index');
+        $this->middleware('verified')->only('index');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -93,6 +105,6 @@ class ProductsController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')
-            ->with('success','Producto borrado');
+            ->with('success', 'Producto borrado');
     }
 }

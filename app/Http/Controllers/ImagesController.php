@@ -11,6 +11,18 @@ use Illuminate\Support\Facades\File;
 class ImagesController extends Controller
 {
     /**
+     * Instantiate a new ImagesController instance, controlling whether user is signed in/verified.
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except([
+            'logout', 'index'
+        ]);
+        $this->middleware('auth')->only('logout', 'index');
+        $this->middleware('verified')->only('index');
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()

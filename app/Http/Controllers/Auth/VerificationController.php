@@ -30,7 +30,7 @@ class VerificationController extends Controller
     }
 
     /**
-     * User's email verificaiton.
+     * User's email verification.
      *
      * @param  \Illuminate\Http\EmailVerificationRequest $request
      * @return \Illuminate\Http\Response
