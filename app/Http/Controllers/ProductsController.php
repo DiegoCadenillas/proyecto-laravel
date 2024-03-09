@@ -102,8 +102,11 @@ class ProductsController extends Controller
     {
         $product = Products::find($id);
 
+        $images = Images::all()->where('productId', '=', $id);
+        foreach($images as $image) $image->delete();
+        
         $product->delete();
-
+        
         return redirect()->route('products.index')
             ->with('success', 'Producto borrado');
     }
