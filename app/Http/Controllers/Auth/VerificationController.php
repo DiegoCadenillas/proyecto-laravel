@@ -26,7 +26,7 @@ class VerificationController extends Controller
     public function notice(Request $request)
     {
         return $request->user()->hasVerifiedEmail()
-            ? redirect()->route('products') : view('auth.verify-email');
+            ? redirect()->route('home') : view('auth.verify-email');
     }
 
     /**
@@ -51,6 +51,6 @@ class VerificationController extends Controller
     {
         $request->user()->sendEmailVerificationNotification();
         return back()
-            ->withSuccess('A fresh verification link has been sent to your email address.');
+            ->withSuccess('Se ha enviado un enlace de activación de cuenta al correo electrónico.');
     }
 }

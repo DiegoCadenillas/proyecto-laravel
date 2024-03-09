@@ -12,14 +12,14 @@ class ProductsController extends Controller
     /**
      * Instantiate a new ProductsController instance, controlling whether user is signed in/verified.
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except([
-            'logout', 'index'
-        ]);
-        $this->middleware('auth')->only('logout', 'index');
-        $this->middleware('verified')->only('index');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest')->except([
+    //         'logout', 'index'
+    //     ]);
+    //     $this->middleware('auth')->only('logout', 'index');
+    //     $this->middleware('verified')->only('index');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('alumnos.create');
+        return view('products.create');
     }
 
     /**

@@ -40,9 +40,9 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="category" class="col-md-4 col-form-label text-md-end text-start">Category</label>
+                            <label for="category" class="col-md-4 col-form-label text-md-end text-start">Categoría</label>
                             <div class="col-md-6">
-                                <input type="number" class="form-control @error('category') is-invalid @enderror"
+                                <input type="text" class="form-control @error('category') is-invalid @enderror"
                                     id="category" name="category" value="{{ old('category') }}">
                                 @if ($errors->has('category'))
                                     <span class="text-danger">{{ $errors->first('category') }}</span>
@@ -54,7 +54,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-end text-start">Precio</label>
                             <div class="col-md-6">
                                 <input type="number" class="form-control @error('price') is-invalid @enderror"
-                                    id="price" name="price" value="{{ old('price') }}">
+                                    id="price" name="price" value="{{ old('price') }}" step=0.01>
                                 @if ($errors->has('price'))
                                     <span class="text-danger">{{ $errors->first('price') }}</span>
                                 @endif
@@ -65,7 +65,7 @@
                             <label for="stock"
                                 class="col-md-4 col-form-label text-md-end text-start">Stock</label>
                             <div class="col-md-6">
-                                <textarea class="form-control @error('stock') is-invalid @enderror" id="stock" name="stock">{{ old('stock') }}</textarea>
+                                <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock" name="stock">{{ old('stock') }}</textarea>
                                 @if ($errors->has('stock'))
                                     <span class="text-danger">{{ $errors->first('stock') }}</span>
                                 @endif

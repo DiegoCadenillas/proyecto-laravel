@@ -90,7 +90,7 @@ class LoginRegisterController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Your provided credentials do not match in our records.',
+            'email' => 'Las credenciales dadas no son correctas, o no existen en nuestra BDD.',
         ])->onlyInput('email');
     }
 
