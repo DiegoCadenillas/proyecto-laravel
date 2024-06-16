@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ImagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Middleware\RedirectIfNotAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,24 +23,37 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 
 //Route::resource()
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(StoreController::class)->group(function () {
+    Route::get('/', 'getRandomProducts')->name('getRandomProducts');
 });
 
-Route::resource('products', ProductsController::class);
-Route::resource('images', ImagesController::class);
+Route::resource('products', ProductsController::class)->middleware(RedirectIfNotAdmin::class);
+Route::resource('images', ImagesController::class)->middleware(RedirectIfNotAdmin::class);
 
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
-    Route::post('/store', 'store')->name('store');
+    Route::any('/store', 'store')->name('store');
     Route::get('/login', 'login')->name('login');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::any('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/home', 'home')->name('home');
-    Route::post('/logout', 'logout')->name('logout');
+    Route::any('/logout', 'logout')->name('logout');
 });
 
 Route::controller(VerificationController::class)->group(function () {
     Route::get('/email/verify', 'notice')->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
-    Route::post('/email/resend', 'resend')->name('verification.resend');
+    Route::any('/email/resend', 'resend')->name('verification.resend');
+});
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+});
+
+Route::controller(StoreController::class)->group(function () {
+    Route::get('/tienda', [StoreController::class, 'getProducts'])->name('store.getProducts');
+    Route::get('/tienda/{id}', [StoreController::class, 'getProduct'])->name('store.getProduct');
+});
+
+Route::controller(CartController::class)->group(function () {
+    Route::get('/carrito', [CartController::class, 'getCartItems'])->name('cart.getCartItems');
 });

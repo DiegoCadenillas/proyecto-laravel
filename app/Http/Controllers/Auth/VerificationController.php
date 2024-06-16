@@ -49,8 +49,12 @@ class VerificationController extends Controller
      */
     public function resend(Request $request)
     {
-        $request->user()->sendEmailVerificationNotification();
-        return back()
-            ->withSuccess('Se ha enviado un enlace de activación de cuenta al correo electrónico.');
+        if ($request->isMethod('post')) {
+            $request->user()->sendEmailVerificationNotification();
+            return back()
+                ->withSuccess('Se ha enviado un enlace de activación de cuenta al correo electrónico.');
+        } else {
+            return redirect()->route('home');
+        }
     }
 }

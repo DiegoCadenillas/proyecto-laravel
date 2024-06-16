@@ -33,7 +33,7 @@ class ImagesController extends Controller
         foreach ($products as $product) {
             $productNames[$product->id] = $product->name;
         }
-        return view('images.index', compact('images', 'productNames'));
+        return view('admin.images.index', compact('images', 'productNames'));
     }
 
     /**
@@ -41,7 +41,7 @@ class ImagesController extends Controller
      */
     public function create()
     {
-        return view('images.create');
+        return view('admin.images.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class ImagesController extends Controller
         $image = Images::find($id);
         $productName = Products::find($image->productId)->name;
 
-        return view('images.show', [
+        return view('admin.images.show', [
             'image' => $image,
             'productName' => $productName
         ]);
@@ -94,7 +94,7 @@ class ImagesController extends Controller
     {
         $image = Images::find($id);
 
-        return view('images.edit', [
+        return view('admin.images.edit', [
             'image' => $image
         ]);
     }

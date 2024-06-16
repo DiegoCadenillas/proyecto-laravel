@@ -41,24 +41,28 @@ class LoginRegisterController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:250',
-            'email' => 'required|string|email:rfc,dns|max:250|unique:users,email',
-            'password' => 'required|string|min:8|confirmed'
-        ]);
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'name' => 'required|string|max:250',
+                'email' => 'required|string|email:rfc,dns|max:250|unique:users,email',
+                'password' => 'required|string|min:8|confirmed'
+            ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
 
-        event(new Registered($user));
+            event(new Registered($user));
 
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
-        return redirect()->route('verification.notice');
+            $credentials = $request->only('email', 'password');
+            Auth::attempt($credentials);
+            $request->session()->regenerate();
+            return redirect()->route('verification.notice');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -79,19 +83,23 @@ class LoginRegisterController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('home');
+        if ($request->isMethod('post')){
+            $credentials = $request->validate([
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
+            
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->route('home');
+            }
+            
+            return back()->withErrors([
+                'email' => 'Las credenciales dadas no son correctas, o no existen en nuestra BDD.',
+                ])->onlyInput('email');
+        } else {
+            return redirect('/');
         }
-
-        return back()->withErrors([
-            'email' => 'Las credenciales dadas no son correctas, o no existen en nuestra BDD.',
-        ])->onlyInput('email');
     }
 
     /**

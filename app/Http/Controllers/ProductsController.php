@@ -27,7 +27,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Products::all();
-        return view('products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -35,7 +35,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -43,9 +43,13 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        Products::create($request->all());
-        return redirect()->route('products.index')
+        if ($request->isMethod('post')){
+            Products::create($request->all());
+            return redirect()->route('products.index')
             ->withSuccess('Se ha creado un nuevo Producto.');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -56,7 +60,7 @@ class ProductsController extends Controller
         $product = Products::find($id);
         $images = Images::all()->where('productId', '=', $id);
 
-        return view('products.show', [
+        return view('admin.products.show', [
             'product' => $product,
             'images' => $images
         ]);
@@ -69,9 +73,13 @@ class ProductsController extends Controller
     {
         $product = Products::find($id);
 
-        return view('products.edit', [
-            'product' => $product
-        ]);
+        if ($product != null) {
+            return view('admin.products.edit', [
+                'product' => $product
+            ]);
+        } else {
+            return redirect()->route('products.index')->with('error', 'Product ID not found.');
+        }
     }
 
     /**
@@ -103,11 +111,16 @@ class ProductsController extends Controller
         $product = Products::find($id);
 
         $images = Images::all()->where('productId', '=', $id);
-        foreach($images as $image) $image->delete();
-        
+        foreach ($images as $image) $image->delete();
+
         $product->delete();
-        
+
         return redirect()->route('products.index')
             ->with('success', 'Producto borrado');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Images::class, 'productId');
     }
 }
