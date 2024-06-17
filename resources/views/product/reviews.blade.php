@@ -64,12 +64,12 @@
           </div>
           <div class="btn-group" role="group">
             <!-- Edit Button -->
-            <button class="btn btn-secondary" style="width:5% !important" id="review-edit-btn">
+            {{-- <button class="btn btn-secondary" style="width:5% !important" id="review-edit-btn">
               <i class="fas fa-edit"></i> Editar
-            </button>
+            </button> --}}
 
             <!-- Delete Button -->
-            <form action="{{ route('reviews.destroy', ['review' => $userReview]) }}" method="POST"
+            {{-- <form action="{{ route('reviews.destroy', ['review' => $userReview]) }}" method="POST"
               style="display:inline;">
               @csrf
               @method('DELETE')
@@ -77,14 +77,36 @@
                 onclick="return confirm('Está seguro de que desea eliminar su reseña?')">
                 <i class="fas fa-trash-alt"></i> Borrar
               </button>
-            </form>
+            </form> --}}
           </div>
         </div>
         <form method="POST"
-          action="{{ route('reviews.edit', ['id' => $userReview->productId, 'reviewId' => $userReview->id]) }}"
+          action="{{ route('reviews.update', ['id' => $userReview->productId, 'reviewId' => $userReview->id]) }}"
           class="hidden-review-edit-form" id="review-edit-form">
           @csrf
           @method('PUT')
+
+          <h4 class="mb-4" style="text-align:center;width:100%;">Edite su reseña</h1>
+            <div class="form-group">
+              <label for="score">Puntuación</label>
+              <select class="form-control" id="score" name="score" required>
+                <option value="" disabled selected>Elija una opción</option>
+                <option value="5">5 - Excelente</option>
+                <option value="4">4 - Muy bueno</option>
+                <option value="3">3 - Decente</option>
+                <option value="2">2 - Regular</option>
+                <option value="1">1 - Malo</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-top:1.5rem">
+              <label for="comment">Comentario</label>
+
+              <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+
+            </div>
+            <input type="hidden" name="productId" value="{{ $product->id }}" style="margin-top:1.5rem">
+            <button type="submit" class="btn btn-primary">Guardar Reseña</button>
+            <button type="button" class="btn btn-warning" id="cancel-review-edit-btn">Cancelar</button>
         </form>
       @endif
 

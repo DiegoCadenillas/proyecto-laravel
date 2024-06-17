@@ -16,7 +16,7 @@ class ImagesObserver
         // Delete default image
         $product = Products::find($images->productId)->with('images')->first();
 
-        if (count($product->images) > 0 && $product->images->first()->imgURL != $DEFAULT_IMG_URL) {
+        if (count($product->images) > 0 && $product->images->first()->imgURL == $DEFAULT_IMG_URL) {
             $image = $product->images->first();
             $image->delete();
         }

@@ -18,27 +18,30 @@ class UserController extends Controller
 
     public function updateUser(Request $request)
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();
 
         if ($request->isMethod('put')) {
             $request->validate([
                 'name' => 'required|string|max:250',
-                'email' => 'required|string|email:rfc,dns|max:250|unique:users,email',
+                'email' => 'required|string|email:rfc,dns|max:250|unique:users,email,' . $user->id,
                 'old_password' => 'required',
-                'new_password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'
+                'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/|confirmed'
             ]);
 
             if (Hash::check($request->old_password, $user->password)) {
                 $user->name = $request->name;
                 $user->email = $request->email;
-                $user->password = Hash::make($request->new_password);
+                $user->password = Hash::make($request->password);
+
+                $user->save();
 
                 return redirect()->back()->with('success', 'Cuenta actualizada correctamente.');
             } else {
                 return redirect()->back()->with('error', 'Se ha introducido una contraseña incorrecta.');
             }
         } else {
-            abort('404');
+            abort(404);
         }
     }
 }

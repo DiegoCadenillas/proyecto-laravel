@@ -38,7 +38,7 @@ class ReviewsController extends Controller
         }
     }
 
-    public function edit(Request $request, Reviews $review) {
+    public function update(Request $request, String $id) {
         if ($request->isMethod('put')) {
             $request->validate([
                 'userId' => 'exists:user,id',
@@ -46,6 +46,8 @@ class ReviewsController extends Controller
                 'score' => 'required|integer|min:1|max:5',
                 'comment' => 'required|string',
             ]);
+
+            $review = Reviews::find($id);
             
             $review->update([$request->score, $request->comment]);
             return redirect()->route('product.reviews', ['id' => $review->productId, 'reviewId' => $review->id])->with('success', 'Se ha actualizado la reseña correctamente.');

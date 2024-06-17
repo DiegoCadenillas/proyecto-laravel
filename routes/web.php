@@ -64,5 +64,5 @@ Route::controller(CartController::class)->group(function () {
 Route::controller(ReviewsController::class)->group(function () {
     Route::any('/reviews/store', [ReviewsController::class, 'store'])->name('reviews.store');
     Route::any('/reviews/destroy', [ReviewsController::class, 'destroy'])->name('reviews.destroy');
-    Route::any('tienda/{id}/reviews/edit/{reviewId}', [ReviewsController::class, 'edit'])->name('reviews.edit');
+    Route::any('tienda/{id}/reviews/edit/{reviewId}', [ReviewsController::class, 'edit'])->name('reviews.update');
 });
