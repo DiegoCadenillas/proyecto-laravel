@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\ImagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\VerificationController;
@@ -46,14 +47,22 @@ Route::controller(VerificationController::class)->group(function () {
 });
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('/perfil', [UserController::class, 'profile'])->name('user.profile');
+    Route::any('/perfil/update', [UserController::class, 'updateUser'])->name('user.update');
 });
 
 Route::controller(StoreController::class)->group(function () {
     Route::get('/tienda', [StoreController::class, 'getProducts'])->name('store.getProducts');
     Route::get('/tienda/{id}', [StoreController::class, 'getProduct'])->name('store.getProduct');
+    Route::get('/tienda/{id}/reviews', [StoreController::class, 'getProductReviews'])->name('store.getProductReviews');
 });
 
 Route::controller(CartController::class)->group(function () {
-    Route::get('/carrito', [CartController::class, 'getCartItems'])->name('cart.getCartItems');
+    Route::get('/carrito', [CartController::class, 'showCart'])->name('cart.showCart');
+});
+
+Route::controller(ReviewsController::class)->group(function () {
+    Route::any('/reviews/store', [ReviewsController::class, 'store'])->name('reviews.store');
+    Route::any('/reviews/destroy', [ReviewsController::class, 'destroy'])->name('reviews.destroy');
+    Route::any('tienda/{id}/reviews/edit/{reviewId}', [ReviewsController::class, 'edit'])->name('reviews.edit');
 });

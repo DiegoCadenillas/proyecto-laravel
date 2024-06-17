@@ -48,7 +48,7 @@ class ProductsController extends Controller
             return redirect()->route('products.index')
             ->withSuccess('Se ha creado un nuevo Producto.');
         } else {
-            return redirect('/');
+            abort('404');
         }
     }
 
@@ -117,10 +117,5 @@ class ProductsController extends Controller
 
         return redirect()->route('products.index')
             ->with('success', 'Producto borrado');
-    }
-
-    public function images()
-    {
-        return $this->hasMany(Images::class, 'productId');
     }
 }

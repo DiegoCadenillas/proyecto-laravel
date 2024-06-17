@@ -123,7 +123,7 @@ class ImagesController extends Controller
     {
         $image = Images::find($id);
 
-        if ($image) {
+        if ($image && $image->imgURL != 'image.not-found.jpg') {
             $imgPath = public_path('productImages/' . $image->imgURL);
             if (File::exists($imgPath)) File::delete($imgPath);
             $image->delete();

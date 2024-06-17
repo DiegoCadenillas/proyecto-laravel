@@ -16,7 +16,7 @@
         <div class="row">
           <label for="code" class="col-md-4 col-form-label text-md-end text-start"><strong>Imagen:</strong></label>
           <div class="col-md-6" style="line-height: 35px;">
-            <img src="/productImages/{{ $image->imgURL }}">
+            <img style="width: 66%;" src="/productImages/{{ $image->imgURL }}">
           </div>
         </div>
 

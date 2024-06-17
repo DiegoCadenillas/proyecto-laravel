@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,5 +48,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isAdmin()
     {
         return (bool) $this->isAdmin == 1;
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Reviews', 'userId', 'id');
+    }
+
+    public function getReviewsByCurrentProductId(String $id)
+    {
+        return Reviews::where('productId', $id)->where('userId', $this->id)->first();
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail); // my notification
     }
 }

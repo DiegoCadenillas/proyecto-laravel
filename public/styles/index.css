@@ -10888,7 +10888,7 @@ p {
   font-weight: 700;
 }
 #mainNav .navbar-brand {
-  color: #ffc800;
+  color: white;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   letter-spacing: 0.0625em;
@@ -10995,17 +10995,17 @@ header.masthead .masthead-heading {
     margin-bottom: 4rem;
   }
 }
-#random-products .random-products-item {
+#productos-calientes .productos-calientes-item {
   max-width: 26rem;
   margin-left: auto;
   margin-right: auto;
 }
-#random-products .random-products-item .random-products-link {
+#productos-calientes .productos-calientes-item .productos-calientes-link {
   position: relative;
   display: block;
   margin: 0 auto;
 }
-#random-products .random-products-item .random-products-link .random-products-hover {
+#productos-calientes .productos-calientes-item .productos-calientes-link .productos-calientes-hover {
   display: flex;
   position: absolute;
   width: 100%;
@@ -11017,57 +11017,57 @@ header.masthead .masthead-heading {
   opacity: 0;
   transition: opacity ease-in-out 0.25s;
 }
-#random-products .random-products-item .random-products-link .random-products-hover .random-products-hover-content {
+#productos-calientes .productos-calientes-item .productos-calientes-link .productos-calientes-hover .productos-calientes-hover-content {
   font-size: 1.25rem;
   color: black;
 }
-#random-products .random-products-item .random-products-link:hover .random-products-hover {
+#productos-calientes .productos-calientes-item .productos-calientes-link:hover .productos-calientes-hover {
   opacity: 1;
 }
-#random-products .random-products-item .random-products-caption {
+#productos-calientes .productos-calientes-item .productos-calientes-caption {
   padding: 1.5rem;
   text-align: center;
   background-color: #fff;
 }
-#random-products .random-products-item .random-products-caption .random-products-caption-heading {
+#productos-calientes .productos-calientes-item .productos-calientes-caption .productos-calientes-caption-heading {
   font-size: 1.5rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   margin-bottom: 0;
 }
-#random-products .random-products-item .random-products-caption .random-products-caption-subheading {
+#productos-calientes .productos-calientes-item .productos-calientes-caption .productos-calientes-caption-subheading {
   font-style: italic;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.random-products-modal .modal-dialog {
+.productos-calientes-modal .modal-dialog {
   margin: 1rem;
   max-width: 100vw;
 }
-.random-products-modal .modal-content {
+.productos-calientes-modal .modal-content {
   padding-top: 6rem;
   padding-bottom: 6rem;
   text-align: center;
 }
-.random-products-modal .modal-content h2, .random-products-modal .modal-content .h2 {
+.productos-calientes-modal .modal-content h2, .productos-calientes-modal .modal-content .h2 {
   font-size: 3rem;
   line-height: 3rem;
 }
-.random-products-modal .modal-content p.item-intro {
+.productos-calientes-modal .modal-content p.item-intro {
   font-style: italic;
   margin-bottom: 2rem;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-.random-products-modal .modal-content p {
+.productos-calientes-modal .modal-content p {
   margin-bottom: 2rem;
 }
-.random-products-modal .modal-content ul.list-inline {
+.productos-calientes-modal .modal-content ul.list-inline {
   margin-bottom: 2rem;
 }
-.random-products-modal .modal-content img {
+.productos-calientes-modal .modal-content img {
   margin-bottom: 2rem;
 }
-.random-products-modal .close-modal {
+.productos-calientes-modal .close-modal {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
@@ -11076,7 +11076,7 @@ header.masthead .masthead-heading {
   cursor: pointer;
   background-color: transparent;
 }
-.random-products-modal .close-modal:hover {
+.productos-calientes-modal .close-modal:hover {
   opacity: 0.3;
 }
 
@@ -11265,55 +11265,55 @@ header.masthead .masthead-heading {
   height: 2.75rem;
 }
 
-section#contact {
+section#contactenos {
   background-color: #212529;
   background-image: url("../assets/img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
 }
-section#contact .section-heading {
+section#contactenos .section-heading {
   color: #fff;
 }
-section#contact form#contactForm .form-group {
+section#contactenos form#contactenosForm .form-group {
   margin-bottom: 1.5rem;
 }
-section#contact form#contactForm .form-group input,
-section#contact form#contactForm .form-group textarea {
+section#contactenos form#contactenosForm .form-group input,
+section#contactenos form#contactenosForm .form-group textarea {
   padding: 1.25rem;
 }
-section#contact form#contactForm .form-group input.form-control {
+section#contactenos form#contactenosForm .form-group input.form-control {
   height: auto;
 }
-section#contact form#contactForm .form-group-textarea {
+section#contactenos form#contactenosForm .form-group-textarea {
   height: 100%;
 }
-section#contact form#contactForm .form-group-textarea textarea {
+section#contactenos form#contactenosForm .form-group-textarea textarea {
   height: 100%;
   min-height: 10rem;
 }
-section#contact form#contactForm p.help-block {
+section#contactenos form#contactenosForm p.help-block {
   margin: 0;
 }
-section#contact form#contactForm .form-control:focus {
+section#contactenos form#contactenosForm .form-control:focus {
   border-color: #ffc800;
   box-shadow: none;
 }
-section#contact form#contactForm ::-webkit-input-placeholder {
+section#contactenos form#contactenosForm ::-webkit-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #ced4da;
 }
-section#contact form#contactForm :-moz-placeholder {
+section#contactenos form#contactenosForm :-moz-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #ced4da;
 }
-section#contact form#contactForm ::-moz-placeholder {
+section#contactenos form#contactenosForm ::-moz-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #ced4da;
 }
-section#contact form#contactForm :-ms-input-placeholder {
+section#contactenos form#contactenosForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   color: #ced4da;
@@ -11347,7 +11347,8 @@ body, html {
 }
 
 .card {
-  width: 50% !important;
+  min-width: 50% !important;
+  max-width: 85% !important;
   height: 100%;
 }
 
@@ -11363,22 +11364,22 @@ td img {
   max-width: 33%;
 }
 
-.random-products-img {
+.productos-calientes-img {
   width:100%;
   color: black;
   text-align: center;
   
 }
 
-.random-products-img:hover {
+.productos-calientes-img:hover {
   color: white;
 }
 
-.random-products-item {
+.productos-calientes-item {
   transition: 0.66s;
 }
 
-.random-products-item:hover {
+.productos-calientes-item:hover {
   transform: scale(1.1);
   transition: 0.66s;
 }
@@ -11403,7 +11404,7 @@ td img {
   transition: 0.5s;
 }
 
-.showCartSuccess {
+.showSuccess {
   
   transition: 0.5s;
   visibility: visible;
@@ -11414,4 +11415,46 @@ td img {
   padding: 0.35rem 0.35rem 0.35rem 0.75rem;
   background-color: #50d463;
   color: black;
+}
+
+.carousel {
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-item {
+  height:100%;
+  width: 100%;
+}
+
+.carousel-item img {
+  object-fit: cover !important;
+  height: 100% !important;
+}
+
+.hidden-review-edit-form {
+  visibility: hidden;
+}
+
+review-edit-form {
+  visibility: visible;
+  margin-bottom: 2.5rem;
+  margin-top: 2rem;
+}
+
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  text-transform: none !important;
+}
+
+.filter-search-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.store-container {
+  width: 80%;
 }

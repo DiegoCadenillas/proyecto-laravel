@@ -45,7 +45,7 @@ class LoginRegisterController extends Controller
             $request->validate([
                 'name' => 'required|string|max:250',
                 'email' => 'required|string|email:rfc,dns|max:250|unique:users,email',
-                'password' => 'required|string|min:8|confirmed'
+                'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'
             ]);
 
             $user = User::create([
@@ -98,7 +98,7 @@ class LoginRegisterController extends Controller
                 'email' => 'Las credenciales dadas no son correctas, o no existen en nuestra BDD.',
                 ])->onlyInput('email');
         } else {
-            return redirect('/');
+            abort('404');
         }
     }
 

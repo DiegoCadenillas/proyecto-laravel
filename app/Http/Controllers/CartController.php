@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function getCartItems(Request $request)
+    public function showCart(Request $request)
     {
         if (!empty($_COOKIE['cartItems'])) {
-            $productIds = $_COOKIE['cartItems'];
+            $valuePairs = explode(':', $_COOKIE['cartItems']);
+            $productIds = [];
+            foreach ($valuePairs as $valuePair) {
+                array_push($productIds, explode('_', $valuePair)[1]);
+            }
             $cartItems = Products::whereIn('id', $productIds)->with('images')->get();
             return view('cart', [
                 'cartItems' => $cartItems

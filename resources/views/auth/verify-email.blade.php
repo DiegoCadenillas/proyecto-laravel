@@ -1,4 +1,4 @@
-@extends('auth.layouts')
+@extends('layouts')
 
 @section('content')
   <div class="auth-container">
@@ -15,7 +15,7 @@
         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
           @csrf
           <button type="submit" class="btn btn-link p-0 m-0 align-baseline">haga click aquí para pedir otro
-            correo.</button>.
+            correo</button>.
         </form>
       </div>
     </div>

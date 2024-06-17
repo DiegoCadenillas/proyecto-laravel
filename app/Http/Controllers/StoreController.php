@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reviews;
 use App\Models\Products;
 use App\Models\Images;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,18 @@ class StoreController extends Controller
     {
         $product = Products::with('images')->find($id);
 
-        return view('product.show', ['product' => $product]);
+        if ($product != null) {
+            $relatedProducts = Products::with('images')
+                ->where('category', $product->category)
+                ->where('id', '!=', $product->id)
+                ->inRandomOrder()
+                ->take(5)
+                ->get();
+
+            return view('product.show', ['product' => $product, 'relatedProducts' => $relatedProducts]);
+        } else {
+            return redirect('/tienda');
+        }
     }
 
     public function getRandomProducts(Request $request)
@@ -30,7 +42,7 @@ class StoreController extends Controller
         return view('index', ['products' => $products]);
     }
 
-    public function getRandomProductsByCategory(Request $request, String $category)
+    public static function getRandomProductsByCategory(Request $request, String $category)
     {
         $products = Products::with('images')
             ->where('category', $category)
@@ -38,6 +50,26 @@ class StoreController extends Controller
             ->take(3)
             ->get();
 
-        return view('index', ['products' => $products]);
+        return $products;
+    }
+
+    public function getProductReviews(Request $request, String $id)
+    {
+        $product = Products::with('reviews')->find($id);
+
+        if ($product != null) {
+            return view('product.reviews', ["product" => $product]);
+        } else {
+            abort('404');
+        }
+    }
+
+    public function destroy(Request $request, String $id)
+    {
+        if ($request->isMethod('delete')) {
+            Reviews::find($id)->delete();
+        } else {
+            abort('404');
+        }
     }
 }

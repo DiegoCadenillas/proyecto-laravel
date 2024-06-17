@@ -1,7 +1,7 @@
 @extends('layouts')
 
 @section('content')
-  <div class="auth.container">
+  <div class="auth-container">
     @if ($message = Session::get('success'))
       <div class="alert alert-success" role="alert">
         {{ $message }}
@@ -48,8 +48,12 @@
           <div class="mb-3 row">
             <label for="category" class="col-md-4 col-form-label text-md-end text-start">Categoría</label>
             <div class="col-md-6">
-              <input type="text" class="form-control @error('category') is-invalid @enderror" id="category"
-                name="category" value="{{ $product->category }}">
+              <select name="category" id="category" placeholder="Elija una..." class="form-select" required>
+                <option value="" disabled>Elija una opción</option>
+                <option value="Pendientes" {{ $product->category == 'Pendientes' ? 'selected' : '' }}>Pendientes</option>
+                <option value="Cadenas" {{ $product->category == 'Cadenas' ? 'selected' : '' }}>Cadenas</option>
+                <option value="Sortijas" {{ $product->category == 'Sortijas' ? 'selected' : '' }}>Sortijas</option>
+              </select>
               @if ($errors->has('category'))
                 <span class="text-danger">{{ $errors->first('category') }}</span>
               @endif
@@ -60,7 +64,7 @@
             <label for="price" class="col-md-4 col-form-label text-md-end text-start">Precio</label>
             <div class="col-md-6">
               <input type="number" step=0.01 class="form-control @error('price') is-invalid @enderror" id="price"
-                name="price" value="{{ $product->price }}">
+                name="price" value="{{ $product->price }}" min="0" max="100000.00">
               @if ($errors->has('price'))
                 <span class="text-danger">{{ $errors->first('price') }}</span>
               @endif
@@ -71,7 +75,7 @@
             <label for="stock" class="col-md-4 col-form-label text-md-end text-start">Stock</label>
             <div class="col-md-6">
               <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock"
-                name="stock" value="{{ $product->stock }}">
+                name="stock" value="{{ $product->stock }}" min="0" max="1000000.00">
               @if ($errors->has('stock'))
                 <span class="text-danger">{{ $errors->first('stock') }}</span>
               @endif

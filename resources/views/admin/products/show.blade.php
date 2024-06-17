@@ -58,7 +58,7 @@
               </div>
             @else
               @foreach ($images as $image)
-                <img src="/productImages/{{ $image->imgURL }}" alt="{{ $image->altText }}">
+                <img style="width:66%" src="/productImages/{{ $image->imgURL }}" alt="{{ $image->altText }}">
                 <p>Texto Alternativo: {{ $image->altText }}</p>
               @endforeach
             @endif
@@ -68,4 +68,8 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('/js/productShow.js') }}"></script>
 @endsection
